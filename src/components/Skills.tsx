@@ -1,33 +1,54 @@
 'use client'
 import React from 'react'
-import { FaCode, FaDatabase, FaServer, FaGit } from 'react-icons/fa'
+import { FaCode, FaDatabase, FaServer, FaGit, FaHtml5, FaCss3Alt, FaJs, FaLaravel, FaNodeJs, FaPhp } from 'react-icons/fa'
 import { IconType } from 'react-icons'
+import { SiCodeigniter, SiMongodb, SiMysql, SiAuth0 } from 'react-icons/si'
 
 interface SkillCategory {
   icon: IconType
-  items: string[]
+  items: {
+    name: string
+    icon: IconType
+  }[]
 }
 
 const skills: Record<string, SkillCategory> = {
   'Backend Development': {
     icon: FaCode,
-    items: ['PHP (CodeIgniter 3, Laravel)', 'Express.js', 'Node.js']
+    items: [
+      { name: 'PHP (CodeIgniter 3, Laravel)', icon: FaPhp },
+      { name: 'Express.js', icon: FaNodeJs },
+      { name: 'Node.js', icon: FaNodeJs }
+    ]
   },
   'Frontend Technologies': {
     icon: FaCode,
-    items: ['HTML', 'CSS', 'JavaScript']
+    items: [
+      { name: 'HTML', icon: FaHtml5 },
+      { name: 'CSS', icon: FaCss3Alt },
+      { name: 'JavaScript', icon: FaJs }
+    ]
   },
   'Database Management': {
     icon: FaDatabase,
-    items: ['MySQL', 'MongoDB']
+    items: [
+      { name: 'MySQL', icon: SiMysql },
+      { name: 'MongoDB', icon: SiMongodb }
+    ]
   },
   'API Development': {
     icon: FaServer,
-    items: ['RESTful APIs', 'Authentication (JWT, OAuth)']
+    items: [
+      { name: 'RESTful APIs', icon: FaServer },
+      { name: 'Authentication (JWT, OAuth)', icon: SiAuth0 }
+    ]
   },
   'Version Control': {
     icon: FaGit,
-    items: ['Git', 'GitHub']
+    items: [
+      { name: 'Git', icon: FaGit },
+      { name: 'GitHub', icon: FaGit }
+    ]
   }
 }
 
@@ -54,12 +75,15 @@ export default function Skills() {
                   <h3 className="text-lg sm:text-xl font-semibold ml-3 sm:ml-4 text-gray-900">{category}</h3>
                 </div>
                 <ul className="space-y-2 sm:space-y-3">
-                  {items.map((item) => (
-                    <li key={item} className="flex items-start text-sm sm:text-base text-gray-700">
-                      <span className="text-blue-500 mr-2 mt-1">•</span>
-                      <span className="group-hover:text-blue-700 transition-colors duration-300">{item}</span>
-                    </li>
-                  ))}
+                  {items.map((item) => {
+                    const ItemIcon = item.icon
+                    return (
+                      <li key={item.name} className="flex items-center text-sm sm:text-base text-gray-700 group-hover:text-blue-700 transition-colors duration-300">
+                        <ItemIcon className="text-blue-500 mr-2 text-lg sm:text-xl" />
+                        <span>{item.name}</span>
+                      </li>
+                    )
+                  })}
                 </ul>
               </div>
             </div>
