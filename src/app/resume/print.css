@@ -1,0 +1,27 @@
+@media print {
+  @page {
+    margin: 1.5cm;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .max-w-4xl {
+    max-width: none !important;
+  }
+
+  .p-8 {
+    padding: 0 !important;
+  }
+
+  a {
+    text-decoration: none !important;
+    color: inherit !important;
+  }
+
+  section {
+    page-break-inside: avoid;
+  }
+} 
