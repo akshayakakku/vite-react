@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaGithub } from 'react-icons/fa'
 import { IconType } from 'react-icons'
 
 interface ContactInfo {
@@ -39,61 +39,47 @@ const contactInfo: ContactInfo[] = [
 
 export default function Contact() {
   return (
-    <section className="py-8 xs:py-12 sm:py-16 md:py-20 bg-gradient-to-b from-gray-50 to-white" id="contact">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-6 xs:mb-8 sm:mb-12 md:mb-16">
-          <h2 className="text-2xl xs:text-3xl sm:text-4xl font-bold mb-3 xs:mb-4 text-gray-900">Get in Touch</h2>
-          <div className="w-16 xs:w-20 h-1 bg-blue-500 mx-auto"></div>
+    <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-white to-gray-50" id="contact">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900">Get In Touch</h2>
+          <div className="w-20 h-1 bg-blue-500 mx-auto"></div>
+          <p className="text-base sm:text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
+            Feel free to reach out for collaborations or just a friendly hello
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 xs:gap-6 sm:gap-8">
-          <div className="bg-white rounded-xl shadow-lg p-4 xs:p-6 sm:p-8">
-            <h3 className="text-base xs:text-lg sm:text-xl font-semibold text-gray-900 mb-3 xs:mb-4">Contact Information</h3>
-            <div className="space-y-3 xs:space-y-4">
-              <div className="flex items-center">
-                <div className="bg-blue-500/10 p-2 xs:p-3 rounded-lg">
-                  <FaEnvelope size={18} className="xs:text-[20px] text-blue-600" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+          {contactInfo.map((info, index) => {
+            const Icon = info.icon
+            return (
+              <div 
+                key={index} 
+                className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
+              >
+                <div className="p-6 sm:p-8">
+                  <div className="flex items-center mb-3 sm:mb-4">
+                    <div className="bg-blue-500/10 p-3 sm:p-4 rounded-lg group-hover:bg-blue-500/20 transition-colors duration-300">
+                      <Icon size={20} className="sm:text-[24px] text-blue-600" />
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-semibold ml-3 sm:ml-4 text-gray-900">{info.label}</h3>
+                  </div>
+                  {info.href ? (
+                    <a
+                      href={info.href}
+                      className="text-sm sm:text-base text-gray-600 hover:text-blue-600 transition-colors duration-300 block ml-12 sm:ml-16"
+                      target={info.label === 'GitHub' ? '_blank' : undefined}
+                      rel={info.label === 'GitHub' ? 'noopener noreferrer' : undefined}
+                    >
+                      {info.value}
+                    </a>
+                  ) : (
+                    <p className="text-sm sm:text-base text-gray-600 ml-12 sm:ml-16">{info.value}</p>
+                  )}
                 </div>
-                <a href="mailto:akshayakakku@gmail.com" className="ml-3 xs:ml-4 text-sm xs:text-base text-gray-700 hover:text-blue-600 transition-colors duration-300">
-                  akshayakakku@gmail.com
-                </a>
               </div>
-              <div className="flex items-center">
-                <div className="bg-blue-500/10 p-2 xs:p-3 rounded-lg">
-                  <FaPhone size={18} className="xs:text-[20px] text-blue-600" />
-                </div>
-                <a href="tel:+1234567890" className="ml-3 xs:ml-4 text-sm xs:text-base text-gray-700 hover:text-blue-600 transition-colors duration-300">
-                  +1 (234) 567-890
-                </a>
-              </div>
-              <div className="flex items-center">
-                <div className="bg-blue-500/10 p-2 xs:p-3 rounded-lg">
-                  <FaMapMarkerAlt size={18} className="xs:text-[20px] text-blue-600" />
-                </div>
-                <span className="ml-3 xs:ml-4 text-sm xs:text-base text-gray-700">
-                  New York, NY
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white rounded-xl shadow-lg p-4 xs:p-6 sm:p-8">
-            <h3 className="text-base xs:text-lg sm:text-xl font-semibold text-gray-900 mb-3 xs:mb-4">Social Media</h3>
-            <div className="flex space-x-3 xs:space-x-4">
-              <a href="https://github.com/akshayakakku" target="_blank" rel="noopener noreferrer" 
-                className="bg-gray-100 p-2 xs:p-3 rounded-lg hover:bg-blue-500/10 transition-colors duration-300">
-                <FaGithub size={20} className="xs:text-[24px] text-gray-700 hover:text-blue-600" />
-              </a>
-              <a href="https://linkedin.com/in/akshayakakku" target="_blank" rel="noopener noreferrer"
-                className="bg-gray-100 p-2 xs:p-3 rounded-lg hover:bg-blue-500/10 transition-colors duration-300">
-                <FaLinkedin size={20} className="xs:text-[24px] text-gray-700 hover:text-blue-600" />
-              </a>
-              <a href="https://twitter.com/akshayakakku" target="_blank" rel="noopener noreferrer"
-                className="bg-gray-100 p-2 xs:p-3 rounded-lg hover:bg-blue-500/10 transition-colors duration-300">
-                <FaTwitter size={20} className="xs:text-[24px] text-gray-700 hover:text-blue-600" />
-              </a>
-            </div>
-          </div>
+            )
+          })}
         </div>
       </div>
     </section>

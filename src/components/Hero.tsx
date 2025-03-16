@@ -50,7 +50,7 @@ export default function Hero() {
           </div>
           <a
             href="/resume/akshay_Kumar_Resume.pdf"
-            download="akshay_Kumar_Resume.pdf"
+            download
             className="inline-flex items-center px-3 xs:px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-blue-500 hover:bg-blue-600 text-white text-xs xs:text-sm sm:text-base font-semibold transition-colors duration-200 group"
           >
             <FaFileDownload className="mr-2 group-hover:animate-bounce" />

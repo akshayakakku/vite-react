@@ -21,33 +21,39 @@ const experiences = [
 
 export default function Experience() {
   return (
-    <section className="py-8 xs:py-12 sm:py-16 md:py-20 bg-white" id="experience">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-6 xs:mb-8 sm:mb-12 md:mb-16">
-          <h2 className="text-2xl xs:text-3xl sm:text-4xl font-bold mb-3 xs:mb-4 text-gray-900">Work Experience</h2>
-          <div className="w-16 xs:w-20 h-1 bg-blue-500 mx-auto"></div>
+    <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-white to-gray-50" id="experience">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900">Work Experience</h2>
+          <div className="w-20 h-1 bg-blue-500 mx-auto"></div>
         </div>
-
-        <div className="space-y-4 xs:space-y-6 sm:space-y-8">
+        <div className="max-w-4xl mx-auto">
           {experiences.map((exp, index) => (
-            <div 
-              key={index}
-              className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
-            >
-              <div className="p-4 xs:p-6 sm:p-8">
-                <div className="flex flex-col xs:flex-row xs:items-center justify-between mb-3 xs:mb-4">
-                  <h3 className="text-base xs:text-lg sm:text-xl font-semibold text-gray-900 mb-1 xs:mb-0">{exp.company}</h3>
-                  <span className="text-xs xs:text-sm text-gray-500">{exp.period}</span>
+            <div key={index} className="bg-white rounded-xl shadow-lg p-6 sm:p-8 hover:shadow-2xl transition-shadow duration-300">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 sm:mb-8">
+                <div className="flex items-center">
+                  <div className="bg-blue-500/10 p-3 sm:p-4 rounded-lg">
+                    <FaBriefcase size={20} className="sm:text-[24px] text-blue-600" />
+                  </div>
+                  <div className="ml-3 sm:ml-4">
+                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900">{exp.company}</h3>
+                    <p className="text-lg sm:text-xl text-blue-600 mt-1">{exp.position}</p>
+                  </div>
                 </div>
-                <h4 className="text-sm xs:text-base sm:text-lg font-medium text-blue-600 mb-2 xs:mb-3">{exp.position}</h4>
-                <ul className="space-y-1.5 xs:space-y-2">
-                  {exp.achievements.map((achievement, i) => (
-                    <li key={i} className="flex items-start text-xs xs:text-sm text-gray-700">
-                      <span className="text-blue-500 mr-1.5 xs:mr-2 mt-1">•</span>
-                      <span>{achievement}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="flex items-center mt-3 sm:mt-0">
+                  <FaCalendar className="text-blue-600 mr-2" />
+                  <p className="text-sm sm:text-base text-gray-600 font-medium">{exp.period}</p>
+                </div>
+              </div>
+              <div className="space-y-3 sm:space-y-4">
+                {exp.achievements.map((achievement, i) => (
+                  <div key={i} className="flex items-start group">
+                    <div className="w-2 h-2 rounded-full bg-blue-500 mt-2 group-hover:bg-blue-600 transition-colors duration-300"></div>
+                    <p className="text-sm sm:text-base text-gray-700 ml-3 sm:ml-4 group-hover:text-gray-900 transition-colors duration-300">
+                      {achievement}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           ))}
