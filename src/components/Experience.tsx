@@ -6,15 +6,28 @@ const experiences = [
   {
     company: 'Eracom Technologies Pvt Ltd',
     position: 'Backend Developer',
-    period: '2024 - 2025',
+    period: 'November 2023 - Present',
     achievements: [
-      'Developed and maintained backend systems using CodeIgniter 3, Laravel, and Express.js',
+      'Developed and maintained backend systems using CodeIgniter 3 and Express.js',
       'Designed and optimized RESTful APIs to enhance system efficiency and performance',
       'Managed database schemas and wrote efficient queries for MySQL & MongoDB',
       'Implemented authentication mechanisms using JWT and OAuth',
       'Integrated third-party APIs for payment processing, email services, and data handling',
       'Collaborated with frontend developers to ensure seamless integration of backend and UI components',
       'Debugged and optimized application performance'
+    ]
+  },
+  {
+    company: 'Mind Roots Pvt Ltd',
+    position: 'Backend Developer',
+    period: 'May 2023 - November 2023',
+    achievements: [
+      'Developed and maintained backend systems using Laravel',
+      'Created and optimized RESTful APIs for mobile applications',
+      'Implemented secure authentication and authorization systems',
+      'Worked on database optimization and query performance',
+      'Collaborated with the team to deliver high-quality solutions',
+      'Participated in code reviews and technical discussions'
     ]
   }
 ]
@@ -27,7 +40,7 @@ export default function Experience() {
           <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900">Work Experience</h2>
           <div className="w-20 h-1 bg-blue-500 mx-auto"></div>
         </div>
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto space-y-8">
           {experiences.map((exp, index) => (
             <div key={index} className="bg-white rounded-xl shadow-lg p-6 sm:p-8 hover:shadow-2xl transition-shadow duration-300">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 sm:mb-8">
