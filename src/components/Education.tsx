@@ -24,7 +24,7 @@ export default function Education() {
               </div>
               <div className="flex items-center mt-4 md:mt-0">
                 <FaCalendar className="text-blue-600 mr-2" />
-                <p className="text-gray-600 font-medium">2019 - 2024</p>
+                <p className="text-gray-600 font-medium">2019 - 2022</p>
                 <span className="mx-2 text-gray-400">|</span>
                 <p className="text-gray-800 font-semibold">GPA: 3.8 / 4.0</p>
               </div>
