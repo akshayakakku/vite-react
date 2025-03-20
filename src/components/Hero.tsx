@@ -91,7 +91,7 @@ export default function Hero() {
           {/* Content Section */}
           <div className="text-center lg:text-left animate-fade-in-up">
             <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-3 sm:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-cyan-200 tracking-tight">
-              AKSHAY KUMAR
+              Hi I'm AKSHAY KUMAR
             </h1>
             <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl mb-4 sm:mb-6 md:mb-8 text-blue-200 font-light">
               Web Developer

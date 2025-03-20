@@ -8,7 +8,7 @@ export default function About() {
         <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12">About Me</h2>
         <div className="max-w-4xl mx-auto">
           <p className="text-base sm:text-lg text-gray-700 leading-relaxed mb-4 sm:mb-6">
-            Backend Developer with 1.5 year of experience in building and maintaining
+            Backend Developer with 2 year of experience in building and maintaining
             scalable web applications. Proficient in PHP (CodeIgniter 3, Laravel),
             JavaScript (Express.js, Node.js), MySQL, and MongoDB. Passionate about
             developing secure, efficient, and optimized backend systems.
