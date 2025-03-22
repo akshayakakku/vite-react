@@ -1,152 +1,108 @@
 'use client'
-import React, { useState, useRef } from 'react'
-import { FaGithub, FaEnvelope, FaPhone, FaArrowDown, FaFileDownload, FaCamera } from 'react-icons/fa'
+import React from 'react'
+import { FaGithub, FaEnvelope, FaPhone, FaArrowDown, FaFileDownload, FaLinkedin } from 'react-icons/fa'
 import Image from 'next/image'
 
 export default function Hero() {
-  const [profileImage, setProfileImage] = useState('/images/profile.jpg')
-  const [isUploading, setIsUploading] = useState(false)
-  const [error, setError] = useState('')
-  const fileInputRef = useRef<HTMLInputElement>(null)
-
-  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if (!file) return
-
-    // Validate file type
-    if (!file.type.startsWith('image/')) {
-      setError('Please upload an image file')
-      return
-    }
-
-    // Validate file size (max 5MB)
-    if (file.size > 5 * 1024 * 1024) {
-      setError('File size should be less than 5MB')
-      return
-    }
-
-    setIsUploading(true)
-    setError('')
-
-    try {
-      const formData = new FormData()
-      formData.append('file', file)
-
-      const response = await fetch('/api/upload', {
-        method: 'POST',
-        body: formData,
-      })
-
-      const data = await response.json()
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to upload image')
-      }
-
-      setProfileImage(data.filename)
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to upload image')
-    } finally {
-      setIsUploading(false)
-    }
-  }
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-900 via-blue-900 to-blue-800">
-      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
-          {/* Profile Picture Section */}
-          <div className="w-48 xs:w-56 sm:w-64 md:w-72 lg:w-80 flex-shrink-0">
-            <div className="relative w-full aspect-square rounded-full overflow-hidden border-4 border-blue-200/20 shadow-2xl group">
+    <section className="min-h-screen flex items-center bg-gradient-to-b from-gray-900 to-blue-950 relative overflow-hidden">
+      {/* Simple Background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900/50"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(24,24,27,0)_0%,rgba(88,28,135,0.15)_100%)]"></div>
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-16">
+          {/* Profile Image */}
+          <div className="relative group">
+            <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-blue-600/25 to-purple-600/25 blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+            <div className="w-48 h-48 md:w-64 md:h-64 relative rounded-full overflow-hidden border-4 border-white/10 shadow-xl backdrop-blur-sm transform group-hover:scale-[1.01] transition-all duration-300">
               <Image
-                src={profileImage}
+                src="/images/profile.jpg"
                 alt="Akshay Kumar"
                 fill
                 className="object-cover"
                 priority
               />
-              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <label className="cursor-pointer p-3 rounded-full bg-white/20 hover:bg-white/30 transition-colors duration-200">
-                  <FaCamera className="text-white text-2xl" />
-                  <input
-                    type="file"
-                    ref={fileInputRef}
-                    className="hidden"
-                    accept="image/*"
-                    onChange={handleFileChange}
-                    disabled={isUploading}
-                  />
-                </label>
-              </div>
             </div>
-            {error && (
-              <p className="text-red-400 text-sm mt-2 text-center">{error}</p>
-            )}
-            {isUploading && (
-              <p className="text-blue-200 text-sm mt-2 text-center">Uploading...</p>
-            )}
           </div>
 
-          {/* Content Section */}
-          <div className="text-center lg:text-left animate-fade-in-up">
-            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-3 sm:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-cyan-200 tracking-tight">
-              Hi I'm AKSHAY KUMAR
-            </h1>
-            <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl mb-4 sm:mb-6 md:mb-8 text-blue-200 font-light">
-              Web Developer
-            </h2>
-            <div className="w-16 xs:w-20 h-1 bg-blue-500 mx-auto lg:mx-0 mb-4 sm:mb-6 md:mb-8"></div>
-            <p className="text-sm xs:text-base sm:text-lg md:text-xl mb-6 sm:mb-8 md:mb-12 max-w-2xl mx-auto lg:mx-0 text-blue-100 leading-relaxed px-4 lg:px-0">
+          {/* Content */}
+          <div className="flex-1 text-center md:text-left space-y-6">
+            {/* Main Heading */}
+            <div className="space-y-3">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight [text-shadow:_0_1px_2px_rgb(0_0_0_/_20%)]">
+                Hi, I'm AKSHAY KUMAR
+              </h1>
+              <h2 className="text-xl sm:text-2xl md:text-3xl text-blue-200 font-light tracking-wide">
+                Web Developer
+              </h2>
+            </div>
+
+            {/* Description */}
+            <p className="text-base sm:text-lg text-gray-300 max-w-2xl leading-relaxed [text-shadow:_0_1px_1px_rgb(0_0_0_/_10%)]">
               Backend Developer with expertise in PHP, JavaScript, and modern web technologies.
               Passionate about creating efficient and scalable web applications.
             </p>
-            
-            <div className="flex justify-center lg:justify-start space-x-3 xs:space-x-4 sm:space-x-6 md:space-x-8 mb-6 sm:mb-8 md:mb-12">
+
+            {/* Social Links */}
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-5">
+              {[
+                { href: "https://github.com", icon: FaGithub, label: "GitHub" },
+                { href: "mailto:akshaykumarnov125@gmail.com", icon: FaEnvelope, label: "Email" },
+                { href: "tel:8219281855", icon: FaPhone, label: "Phone" },
+                { href: "https://linkedin.com", icon: FaLinkedin, label: "LinkedIn" }
+              ].map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target={social.href.startsWith('http') ? '_blank' : undefined}
+                  rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  className="group p-3 text-gray-300 hover:text-white transition-all duration-300 relative"
+                  aria-label={social.label}
+                >
+                  <span className="absolute inset-0 bg-white/5 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-200"></span>
+                  <social.icon className="text-2xl relative z-10 transform group-hover:scale-110 transition-transform duration-200" />
+                </a>
+              ))}
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2">
               <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transform hover:scale-110 transition-transform duration-200"
+                href="/resume/Akshay_Kumar_Resume.pdf"
+                download
+                className="group relative inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg overflow-hidden"
               >
-                <div className="bg-white/10 p-2 xs:p-3 sm:p-4 rounded-full backdrop-blur-sm hover:bg-white/20">
-                  <FaGithub size={20} className="xs:text-[24px] sm:text-[28px] md:text-[32px] text-blue-200" />
-                </div>
+                <span className="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                <FaFileDownload className="mr-2 relative z-10 group-hover:animate-bounce" />
+                <span className="relative z-10">Download Resume</span>
               </a>
               <a
-                href="mailto:akshaykumarnov125@gmail.com"
-                className="transform hover:scale-110 transition-transform duration-200"
+                href="#contact"
+                className="group relative inline-flex items-center px-6 py-3 border border-blue-300/20 text-blue-200 rounded-lg overflow-hidden hover:border-blue-300/30 transition-colors duration-300"
               >
-                <div className="bg-white/10 p-2 xs:p-3 sm:p-4 rounded-full backdrop-blur-sm hover:bg-white/20">
-                  <FaEnvelope size={20} className="xs:text-[24px] sm:text-[28px] md:text-[32px] text-blue-200" />
-                </div>
-              </a>
-              <a
-                href="tel:8219281855"
-                className="transform hover:scale-110 transition-transform duration-200"
-              >
-                <div className="bg-white/10 p-2 xs:p-3 sm:p-4 rounded-full backdrop-blur-sm hover:bg-white/20">
-                  <FaPhone size={20} className="xs:text-[24px] sm:text-[28px] md:text-[32px] text-blue-200" />
-                </div>
+                <span className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                <span className="relative z-10">Contact Me</span>
               </a>
             </div>
-            <a
-              href="/resume/akshay_Kumar_Resume.pdf"
-              download
-              className="inline-flex items-center px-3 xs:px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-blue-500 hover:bg-blue-600 text-white text-xs xs:text-sm sm:text-base font-semibold transition-colors duration-200 group"
-            >
-              <FaFileDownload className="mr-2 group-hover:animate-bounce" />
-              Download Resume
-            </a>
           </div>
         </div>
       </div>
-      
-      <a href="#about" className="absolute bottom-6 xs:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="bg-white/10 p-2 xs:p-3 rounded-full backdrop-blur-sm hover:bg-white/20 transition-colors duration-200">
-          <FaArrowDown size={18} className="xs:text-[20px] sm:text-[24px] text-blue-200" />
-        </div>
-      </a>
+
+      {/* Simple Scroll Indicator */}
+      <div className="absolute bottom-8 left-0 right-0 flex justify-center">
+        <a 
+          href="#about" 
+          className="group p-3 text-gray-400 hover:text-white transition-all duration-300 relative"
+          aria-label="Scroll to About section"
+        >
+          <span className="absolute inset-0 bg-white/5 rounded-full scale-0 group-hover:scale-100 transition-transform duration-200"></span>
+          <FaArrowDown className="text-xl relative z-10 animate-bounce" />
+        </a>
+      </div>
     </section>
   )
 } 
