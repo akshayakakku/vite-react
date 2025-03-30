@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { FaGithub, FaEnvelope, FaPhone, FaArrowDown, FaFileDownload, FaLinkedin } from 'react-icons/fa'
+import { FaGithub, FaEnvelope, FaPhone, FaArrowDown, FaFileDownload, FaLinkedin, FaWhatsapp } from 'react-icons/fa'
 import Image from 'next/image'
 
 export default function Hero() {
@@ -50,16 +50,17 @@ export default function Hero() {
             {/* Social Links */}
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-5">
               {[
-                { href: "https://github.com", icon: FaGithub, label: "GitHub" },
+                { href: "https://wa.me/918219281855", icon: FaWhatsapp, label: "WhatsApp" },
                 { href: "mailto:akshaykumarnov125@gmail.com", icon: FaEnvelope, label: "Email" },
+                { href: "https://github.com", icon: FaGithub, label: "GitHub" },
                 { href: "tel:8219281855", icon: FaPhone, label: "Phone" },
                 { href: "https://linkedin.com", icon: FaLinkedin, label: "LinkedIn" }
               ].map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
-                  target={social.href.startsWith('http') ? '_blank' : undefined}
-                  rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  target={social.href.startsWith('http') || social.href.startsWith('https://wa.me') ? '_blank' : undefined}
+                  rel={social.href.startsWith('http') || social.href.startsWith('https://wa.me') ? 'noopener noreferrer' : undefined}
                   className="group p-3 text-gray-300 hover:text-white transition-all duration-300 relative"
                   aria-label={social.label}
                 >
