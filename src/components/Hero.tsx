@@ -73,7 +73,7 @@ export default function Hero() {
             {/* CTA Buttons */}
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2">
               <a
-                href="/resume/Akshay_Kumar.pdf"
+                href="/resume/Akshay_Kumar_Resume_new.pdf"
                 download
                 className="group relative inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg overflow-hidden"
               >
